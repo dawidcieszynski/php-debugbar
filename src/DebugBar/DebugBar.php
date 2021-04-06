@@ -360,7 +360,8 @@ class DebugBar implements ArrayAccess
         } catch (DebugBarException $e) {
             return false;
         }
-        return count($http->getSessionValue($this->stackSessionNamespace)) > 0;
+        $stackedData = $http->getSessionValue($this->stackSessionNamespace);
+        return $stackedData != null && count($stackedData) > 0;
     }
 
     /**
